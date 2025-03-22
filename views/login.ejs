@@ -1,0 +1,31 @@
+<h1>Login</h1>
+
+<form action="/login" method="POST" style="border:1px solid #ccc">
+ <div class="container">
+  <p>Please fill in this form to log in.</p>
+  <hr>
+
+
+  <div>
+   <label for="email"><b>Email</b></label>
+   <input type="text" placeholder="Enter Email" name="email" required>
+  </div>
+
+  <div>
+   <label for="password"><b>Password</b></label>
+   <input type="password" placeholder="Enter Password" name="password" required>
+  </div>
+
+  <div>
+   <label>
+    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+   </label>
+  </div>
+
+  <div class="clearfix">
+   <button type="submit" class="signupbtn">Login</button>
+  </div>
+ </div>
+</form>
+
+<a href="/signup">Signup</a>
