@@ -1,11 +1,24 @@
-<h1>
- Hi <%= name %>
-</h1>
+<%- include('partials/header', { title: 'Dashboard' }) %>
 
-<form action="/logout" method="POST">
+ <section class="Main-Section">
 
- <div class="clearfix">
-  <button type="submit">Logout</button>
- </div>
+  <h1>Hi <%= name %> !</h1>
 
-</form>
+  <div class="Main-Dashboard-Content">
+   <p>
+    This is your dashboard!
+   </p>
+   <form action="/logout" method="POST">
+
+    <div>
+     <button type="submit">Logout</button>
+    </div>
+
+   </form>
+  </div>
+
+
+
+ </section>
+
+ <%- include('partials/footer') %>

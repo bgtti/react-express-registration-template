@@ -1,43 +1,58 @@
-<h1>Signup</h1>
+<%- include('partials/header', { title: 'Signup' }) %>
 
-<form action="/signup" method="POST" style="border:1px solid #ccc">
- <div class="container">
-  <p>Please fill in this form to create an account.</p>
-  <hr>
+ <section class="Main-Section">
 
-  <div>
-   <label for="name"><b>Name</b></label>
-   <input type="text" placeholder="Enter Name" name="name" required>
+  <div class="Main-Form-Container">
+
+   <h1>Signup</h1>
+   <br>
+   <br>
+   <p>Fill in the form to create an account!</p>
+   <br>
+   <br>
+
+   <form action="/signup" method="POST">
+
+    <div>
+     <label for="name"><b>Name *</b></label>
+     <input type="text" placeholder="Enter Name" name="name" required>
+    </div>
+
+    <div>
+     <label for="email"><b>Email *</b></label>
+     <input type="text" placeholder="Enter Email" name="email" required>
+    </div>
+
+    <div>
+     <label for="password"><b>Password *</b></label>
+     <input type="password" placeholder="Enter Password" name="password" required>
+    </div>
+
+    <div>
+     <label for="repeat-password"><b>Repeat Password *</b></label>
+     <input type="password" placeholder="Repeat Password" name="repeat-password" required>
+    </div>
+
+    <div>
+     <label class="Main-Form-Checkbox">
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+     </label>
+    </div>
+
+    <p>By creating an account you agree to our <a href="/terms">Terms & Conditions</a>.</p>
+
+    <div>
+     <button type="submit">Sign Up</button>
+    </div>
+
+   </form>
+
+   <br>
+   <br>
+   <p>Already have an account? <a href="/login">Login</a></p>
+
   </div>
 
-  <div>
-   <label for="email"><b>Email</b></label>
-   <input type="text" placeholder="Enter Email" name="email" required>
-  </div>
+ </section>
 
-  <div>
-   <label for="password"><b>Password</b></label>
-   <input type="password" placeholder="Enter Password" name="password" required>
-  </div>
-
-  <div>
-   <label for="psw-repeat"><b>Repeat Password</b></label>
-   <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-  </div>
-
-  <div>
-   <label>
-    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-   </label>
-  </div>
-
-
-  <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-  <div class="clearfix">
-   <button type="submit" class="signupbtn">Sign Up</button>
-  </div>
- </div>
-</form>
-
-<a href="/login">Login</a>
+ <%- include('partials/footer') %>

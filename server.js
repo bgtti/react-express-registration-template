@@ -38,12 +38,18 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(express.static('public')); // access to css files
 
 // Routes
 
 // Homepage
 app.get('/', (req, res) => {
  res.render('index.ejs');
+});
+
+// Terms of service page
+app.get('/terms', (req, res) => {
+ res.render('terms.ejs');
 });
 
 // Signup page

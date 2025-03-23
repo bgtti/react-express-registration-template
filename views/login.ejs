@@ -1,31 +1,47 @@
-<h1>Login</h1>
+<%- include('partials/header', { title: 'Login' }) %>
 
-<form action="/login" method="POST" style="border:1px solid #ccc">
- <div class="container">
-  <p>Please fill in this form to log in.</p>
-  <hr>
+ <section class="Main-Section">
 
+  <div class="Main-Form-Container">
 
-  <div>
-   <label for="email"><b>Email</b></label>
-   <input type="text" placeholder="Enter Email" name="email" required>
+   <h1>Login</h1>
+   <br>
+   <br>
+   <p>Welcome back!</p>
+   <br>
+   <br>
+
+   <form action="/login" method="POST">
+
+    <div>
+     <label for="email"><b>Email *</b></label>
+     <input type="text" placeholder="Enter Email" name="email" required>
+    </div>
+
+    <div>
+     <label for="password"><b>Password *</b></label>
+     <input type="password" placeholder="Enter Password" name="password" required>
+    </div>
+
+    <div>
+     <label class="Main-Form-Checkbox">
+      <input type="checkbox" checked="checked" name="remember">
+      Remember me
+     </label>
+    </div>
+
+    <div>
+     <button type="submit">Login</button>
+    </div>
+
+   </form>
+
+   <br>
+   <br>
+   <p>Don't have an account? <a href="/signup">Signup</a></p>
+
   </div>
 
-  <div>
-   <label for="password"><b>Password</b></label>
-   <input type="password" placeholder="Enter Password" name="password" required>
-  </div>
+ </section>
 
-  <div>
-   <label>
-    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-   </label>
-  </div>
-
-  <div class="clearfix">
-   <button type="submit" class="signupbtn">Login</button>
-  </div>
- </div>
-</form>
-
-<a href="/signup">Signup</a>
+ <%- include('partials/footer') %>

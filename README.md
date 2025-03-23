@@ -26,4 +26,12 @@ Currently not using a database.
 Command
 use `npm run devStart`
 
+**********************
+External resources
+
+The base skeleton functionality was adapted from Kyle's Web Dev Simplified video available at: 
+https://www.youtube.com/watch?v=-RCnNyD0L-s
+
+If you are a Node.je beginner I also recommend this video with Node.js basics from Programming with Mosh, available at https://www.youtube.com/watch?v=TlB_eWDSMt4&t=1049s
+
 
