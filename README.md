@@ -1,7 +1,7 @@
 <div align="center">
   <br>
   <h1><b>Express App Registration Template</b></h1>
-  <strong>Version 1 (Express JS only)</strong>
+  <strong>Version 2 (Express JS + MongoDB only)</strong>
 </div>
 <br>
 
@@ -41,13 +41,16 @@ This project is using the following extensions:
    <summary>1. Clone this repository</summary>
 
    >\
-   > More information on how to clone this repository available at https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+   > More information on how to clone this repository [https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository](available here)
    ><br/><br/>
 </details>
 
 <details>
    <summary>2. Install dependencies</summary>
 
+   >\
+   > Make sure you have MongoDB installed in your machine. If you do not, I recommend using the MongoDB Community Server Download [https://www.mongodb.com/try/download/community](available here). (Date: 24 March 2025).
+   > Next, install the app dependencies:
    >\
    > ```pwsh
    >npm install

@@ -216,6 +216,12 @@ form>div>label {
  gap: 5px;
 }
 
+/* Delete button */
+.Main-Form-Delete-Btn {
+ background-color: var(--Rosewood);
+ color: white;
+}
+
 /*DASHBOARD PAGE*/
 .Main-Dashboard-Content {
  margin: 20px;
