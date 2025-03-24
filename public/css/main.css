@@ -31,6 +31,15 @@ button {
  font-size: 20px;
 }
 
+@media only screen and (min-width:1000px) {
+
+ p,
+ a,
+ button {
+  font-size: 16px;
+ }
+}
+
 a {
  color: var(--Olive);
 }
@@ -47,11 +56,20 @@ h1 {
  font-family: 'Melodrama-Medium', sans-serif;
  font-size: 3em;
  color: var(--Rosewood);
+ margin: 5px 0;
 }
 
 label,
 input {
  font-size: 18px;
+}
+
+@media only screen and (min-width:1000px) {
+
+ label,
+ input {
+  font-size: 16px;
+ }
 }
 
 input[type="checkbox"]:checked {
@@ -88,7 +106,7 @@ button {
 
 /* ALL PAGES */
 .Main-Section {
- height: calc(100vh - 70px - 70px);
+ min-height: calc(100vh - 70px - 70px);
  display: flex;
  flex-direction: column;
  justify-content: center;
@@ -102,6 +120,7 @@ Source: Image by Bruno from Pixabay
 available at: https://pixabay.com/photos/spices-cook-spice-up-ingredients-3811731/
 */
 .Homepage-Image {
+ min-height: calc(100vh - 70px - 70px);
  height: 100%;
  width: 100%;
  background-image: url("/images/homepage_picture.jpg");
@@ -147,10 +166,24 @@ form>div {
  gap: 10px
 }
 
+@media only screen and (min-width:1000px) {
+
+ form>div {
+  gap: 7px
+ }
+}
+
 form>div>input {
  border: 1px solid var(--Gray);
  border-radius: 5px;
  padding: 10px;
+}
+
+@media only screen and (min-width:1000px) {
+
+ form>div>input {
+  padding: 5px;
+ }
 }
 
 form>div>label {
@@ -159,6 +192,28 @@ form>div>label {
 
 .Main-Form-Checkbox {
  font-weight: normal;
+}
+
+/* Form error message */
+.Main-Form-Error {
+ padding: 5px;
+ border-radius: 5px;
+ border: 2px solid var(--Rosewood);
+ color: var(--Rosewood);
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+}
+
+.Main-Form-Error-Exclamation {
+ font-family: 'Melodrama-Medium', sans-serif;
+ font-size: 3em;
+}
+
+.Main-Form-Error-Warning {
+ display: flex;
+ flex-direction: column;
+ gap: 5px;
 }
 
 /*DASHBOARD PAGE*/

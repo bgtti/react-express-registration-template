@@ -6,44 +6,51 @@
 
    <h1>Signup</h1>
    <br>
-   <br>
    <p>Fill in the form to create an account!</p>
-   <br>
    <br>
 
    <form action="/signup" method="POST">
 
-    <div>
-     <label for="name"><b>Name *</b></label>
-     <input type="text" placeholder="Enter Name" name="name" required>
-    </div>
+    <% if (error) { %>
+     <div class="Main-Form-Error">
+      <div>
+       <p class="Main-Form-Error-Exclamation">!</p>
+      </div>
+      <div class="Main-Form-Error-Warning">
+       <p><i><b>Error warning</b> </i></p>
+       <p>
+        <%= error %>
+       </p>
+      </div>
+     </div>
+     <% } %>
 
-    <div>
-     <label for="email"><b>Email *</b></label>
-     <input type="text" placeholder="Enter Email" name="email" required>
-    </div>
+      <div>
+       <label for="name"><b>Name *</b></label>
+       <input minlength="1" maxlength="100" name="name" placeholder="Enter Name" required type="text">
+      </div>
 
-    <div>
-     <label for="password"><b>Password *</b></label>
-     <input type="password" placeholder="Enter Password" name="password" required>
-    </div>
+      <div>
+       <label for="email"><b>Email *</b></label>
+       <input minlength="3" maxlength="320" name="email" placeholder="Enter Email" required type="text">
+      </div>
 
-    <div>
-     <label for="repeat-password"><b>Repeat Password *</b></label>
-     <input type="password" placeholder="Repeat Password" name="repeat-password" required>
-    </div>
+      <div>
+       <label for="new-password"><b>Password *</b></label>
+       <input minlength="8" maxlength="60" name="new-password" placeholder="Enter Password" required type="password">
+      </div>
 
-    <div>
-     <label class="Main-Form-Checkbox">
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-     </label>
-    </div>
+      <div>
+       <label for="repeat-password"><b>Repeat Password *</b></label>
+       <input minlength="8" maxlength="60" name="repeat-password" placeholder="Repeat Password" required
+        type="password">
+      </div>
 
-    <p>By creating an account you agree to our <a href="/terms">Terms & Conditions</a>.</p>
+      <p>By creating an account you agree to our <a href="/terms">Terms & Conditions</a>.</p>
 
-    <div>
-     <button type="submit">Sign Up</button>
-    </div>
+      <div>
+       <button type="submit">Sign Up</button>
+      </div>
 
    </form>
 
