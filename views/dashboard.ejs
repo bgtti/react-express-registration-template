@@ -5,16 +5,23 @@
   <h1>Hi <%= name %> !</h1>
 
   <div class="Main-Dashboard-Content">
+
    <p>
     This is your dashboard!
    </p>
-   <form action="/logout" method="POST">
 
+   <form action="/logout" method="POST">
     <div>
      <button type="submit">Logout</button>
     </div>
-
    </form>
+
+   <form action="/deleteAccount" method="POST">
+    <div>
+     <button class="Main-Form-Delete-Btn" type="submit">Delete account</button>
+    </div>
+   </form>
+
   </div>
 
  </section>
