@@ -3,7 +3,6 @@ The library passport is being used to manage user authentication in this app.
 This is the configuration file for passport.
 More information available at: https://www.passportjs.org/
 */
-//const { authenticate } = require('passport')
 const bcrypt = require('bcrypt'); // for hashing
 const LocalStrategy = require('passport-local').Strategy //using the local version of passport
 const User = require('../models/users'); // adjust path if needed

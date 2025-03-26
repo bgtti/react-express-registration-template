@@ -8,6 +8,8 @@ Jest
 Supertest
 Mongodb-memory-server
 
+Run tests from the root folder using the command: npm test
+
 More information about how to setup testing:
 https://mayallo.com/unit-integration-e2e-testing-using-jest/
  */

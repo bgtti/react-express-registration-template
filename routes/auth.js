@@ -3,6 +3,7 @@ Routes concearning authentication:
 - Signup
 - Login
 - Logout
+- Delete (own account)
  */
 const express = require('express');
 const bcrypt = require('bcrypt'); // for hashing
@@ -87,7 +88,6 @@ router.post('/logout', checkAuthenticated, (req, res, next) => {
 // Delete own account
 router.post('/deleteAccount', checkAuthenticated, async (req, res) => {
  try {
-  // Assuming you're using Mongoose and the req.user object is populated by Passport
   await User.findByIdAndDelete(req.user._id);
 
   // Log the user out after deletion
