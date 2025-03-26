@@ -1,10 +1,13 @@
-// import { Helmet } from "react-helmet-async";
 import "./home.css"
 
 function Home() {
  return (
   <section class="Main-Section">
-   <div class="Homepage-Image"></div>
+   {/* Metadata */}
+   <title>Homepage</title>
+
+   {/* Component */}
+   <div className="Homepage-Image"></div>
   </section>
  )
 }

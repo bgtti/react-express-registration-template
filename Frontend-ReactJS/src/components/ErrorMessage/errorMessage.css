@@ -1,0 +1,23 @@
+/* Form error message */
+.Main-Form-Error {
+ margin: 5px 0 15px 0;
+ padding: 5px;
+ border-radius: 5px;
+ border: 2px solid var(--Rosewood);
+ color: var(--Rosewood);
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ gap: 10px;
+}
+
+.Main-Form-Error-Exclamation {
+ font-family: 'Melodrama-Medium', sans-serif;
+ font-size: 3em;
+}
+
+.Main-Form-Error-Warning {
+ display: flex;
+ flex-direction: column;
+ gap: 5px;
+}

@@ -2,18 +2,40 @@
 TODO: implement axios
 */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // if using react-router for internal routing
+import { useDispatch } from "react-redux";
+import { INPUT_LENGTH } from "../../../../generalConfig/constants.js";
+import { setLoader } from '../../redux/loaderSlice.js';
+import useIsComponentMounted from "../../hooks/useIsComponentMounted.js";
+import { signupUser } from '../../apis/handlers/signupUser.js';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.jsx';
+import SuccessMessage from '../../components/SuccessMessage/SuccessMessage.jsx';
 
 function Signup() {
+ const dispatch = useDispatch();
+ const navigate = useNavigate();
+ const isComponentMounted = useIsComponentMounted();
+
  const [formData, setFormData] = useState({
   name: '',
   email: '',
   newPassword: '',
   repeatPassword: '',
  });
+
  const [error, setError] = useState('');
- const navigate = useNavigate();
+ const [success, setSuccess] = useState('');
+
+ //If successfull, success message displays and it navigates to Login page
+ useEffect(() => {
+  if (success !== '') {
+   setTimeout(() => {
+    navigate('/login')
+   }, 2000);
+  }
+ }, [success]);
 
  const handleChange = (e) => {
   setFormData((prev) => ({
@@ -30,32 +52,36 @@ function Signup() {
    return;
   }
 
-  try {
-   const res = await fetch('/signup', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
-    body: JSON.stringify({
-     name: formData.name,
-     email: formData.email,
-     'new-password': formData.newPassword,
-     'repeat-password': formData.repeatPassword,
-    }),
-   });
-
-   if (res.ok) {
-    navigate('/login');
-   } else {
-    const data = await res.json();
-    setError(data?.error || 'Signup failed.');
-   }
-  } catch (err) {
-   setError('Something went wrong. Please try again.');
+  const requestData = {
+   name: formData.name,
+   email: formData.email,
+   password: formData.newPassword
   }
+
+  dispatch(setLoader(true));
+  setError('');
+  setSuccess('');
+
+  signupUser(requestData)
+   .then(res => {
+    if (isComponentMounted) {
+     if (res.response) { setSuccess("You will be re-directed to the login page..."); }
+     else { setError(res.message); }
+    }
+   })
+   .catch(error => { console.error("Error in signup function.", error); })
+   .finally(() => { dispatch(setLoader(false)); })
+
  };
 
  return (
   <section className="Main-Section">
+
+   {/* Metadata */}
+   <title>Sign up</title>
+   <meta name="description" content="Sign up" />
+
+   {/* Component */}
    <div className="Main-Form-Container">
     <h1>Signup</h1>
     <br />
@@ -63,19 +89,11 @@ function Signup() {
     <br />
 
     {error && (
-     <div className="Main-Form-Error">
-      <div>
-       <p className="Main-Form-Error-Exclamation">!</p>
-      </div>
-      <div className="Main-Form-Error-Warning">
-       <p>
-        <i>
-         <b>Error warning</b>
-        </i>
-       </p>
-       <p>{error}</p>
-      </div>
-     </div>
+     <ErrorMessage message={error} />
+    )}
+
+    {success && (
+     <SuccessMessage message={success} />
     )}
 
     <form onSubmit={handleSubmit}>
@@ -89,8 +107,8 @@ function Signup() {
        id="name"
        placeholder="Enter Name"
        required
-       minLength="1"
-       maxLength="100"
+       minLength={INPUT_LENGTH.name.minValue}
+       maxLength={INPUT_LENGTH.name.maxValue}
        value={formData.name}
        onChange={handleChange}
       />
@@ -101,13 +119,14 @@ function Signup() {
        <b>Email *</b>
       </label>
       <input
+       autoComplete="email"
        type="text"
        name="email"
        id="email"
        placeholder="Enter Email"
        required
-       minLength="3"
-       maxLength="320"
+       minLength={INPUT_LENGTH.email.minValue}
+       maxLength={INPUT_LENGTH.email.maxValue}
        value={formData.email}
        onChange={handleChange}
       />
@@ -118,13 +137,14 @@ function Signup() {
        <b>Password *</b>
       </label>
       <input
+       autoComplete="new-password"
        type="password"
        name="newPassword"
        id="new-password"
        placeholder="Enter Password"
        required
-       minLength="8"
-       maxLength="60"
+       minLength={INPUT_LENGTH.password.minValue}
+       maxLength={INPUT_LENGTH.password.maxValue}
        value={formData.newPassword}
        onChange={handleChange}
       />
@@ -135,13 +155,14 @@ function Signup() {
        <b>Repeat Password *</b>
       </label>
       <input
+       autoComplete="new-password"
        type="password"
        name="repeatPassword"
        id="repeat-password"
        placeholder="Repeat Password"
        required
-       minLength="8"
-       maxLength="60"
+       minLength={INPUT_LENGTH.password.minValue}
+       maxLength={INPUT_LENGTH.password.maxValue}
        value={formData.repeatPassword}
        onChange={handleChange}
       />
@@ -149,18 +170,22 @@ function Signup() {
 
      <p>
       By creating an account you agree to our{' '}
-      <a href="/terms">Terms & Conditions</a>.
+      <Link to="/terms">Terms & Conditions</Link>
+
      </p>
 
      <div>
-      <button type="submit">Sign Up</button>
+      <button
+       disabled={success == ! ''}
+       type="submit"
+      >Sign Up</button>
      </div>
     </form>
 
     <br />
     <br />
     <p>
-     Already have an account? <a href="/login">Login</a>
+     Already have an account? <Link to="/login">Login</Link>
     </p>
    </div>
   </section>

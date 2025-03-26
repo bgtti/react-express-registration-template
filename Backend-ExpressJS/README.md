@@ -35,6 +35,8 @@ This project is using the following extensions:
 - bcrypt for password hashing
 - passport for authentication (local version)
 - express-session for session management
+- connect-mongo to use Mongodb for sesion storage
+- cors to use server-side sessions
 - jest, supertest, and Mongodb-memory-server for testing
 
 # Installation

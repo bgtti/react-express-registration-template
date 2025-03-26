@@ -1,37 +1,43 @@
-/*
-TODO: implement axios
-*/
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { INPUT_LENGTH } from "../../../../generalConfig/constants.js";
+import { setLoader } from '../../redux/loaderSlice.js';
+import useIsComponentMounted from "../../hooks/useIsComponentMounted.js";
+import { loginUser } from '../../apis/handlers/loginUser.js';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.jsx';
 
 function Login() {
+ const dispatch = useDispatch();
+ const navigate = useNavigate();
+ const isComponentMounted = useIsComponentMounted();
+
  const [email, setEmail] = useState('');
  const [password, setPassword] = useState('');
  const [remember, setRemember] = useState(true);
  const [error, setError] = useState('');
- const navigate = useNavigate();
 
  const handleSubmit = async (e) => {
   e.preventDefault();
 
-  try {
-   const res = await fetch('/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include', // if your backend sets cookies
-    body: JSON.stringify({ email, password, remember }),
-   });
-
-   if (res.ok) {
-    navigate('/dashboard'); // or wherever you want to redirect
-   } else {
-    const data = await res.json();
-    setError(data?.error || 'Login failed.');
-   }
-  } catch (err) {
-   setError('Something went wrong. Please try again.');
+  const requestData = {
+   email: email,
+   password: password,
+   remember: remember
   }
+
+  dispatch(setLoader(true));
+
+  loginUser(requestData)
+   .then(res => {
+    if (isComponentMounted) {
+     if (res.response) { navigate('/dashboard'); }
+     else { setError(res.message); }
+    }
+   })
+   .catch(error => { console.error("Error in login function.", error); })
+   .finally(() => { dispatch(setLoader(false)); })
+
  };
 
  return (
@@ -45,19 +51,7 @@ function Login() {
     <br />
 
     {error && (
-     <div className="Main-Form-Error">
-      <div>
-       <p className="Main-Form-Error-Exclamation">!</p>
-      </div>
-      <div className="Main-Form-Error-Warning">
-       <p>
-        <i>
-         <b>Error warning</b>
-        </i>
-       </p>
-       <p>{error}</p>
-      </div>
-     </div>
+     <ErrorMessage message={error} />
     )}
 
     <form onSubmit={handleSubmit}>
@@ -66,12 +60,13 @@ function Login() {
        <b>Email *</b>
       </label>
       <input
+       autoComplete="email"
        id="email"
        name="email"
        type="text"
        placeholder="Enter Email"
-       minLength="3"
-       maxLength="320"
+       minLength={INPUT_LENGTH.email.minValue}
+       maxLength={INPUT_LENGTH.email.maxValue}
        required
        value={email}
        onChange={(e) => setEmail(e.target.value)}
@@ -83,12 +78,13 @@ function Login() {
        <b>Password *</b>
       </label>
       <input
+       autoComplete="current-password"
        id="password"
        name="password"
        type="password"
        placeholder="Enter Password"
-       minLength="8"
-       maxLength="60"
+       minLength={INPUT_LENGTH.password.minValue}
+       maxLength={INPUT_LENGTH.password.maxValue}
        required
        value={password}
        onChange={(e) => setPassword(e.target.value)}
@@ -115,7 +111,7 @@ function Login() {
     <br />
     <br />
     <p>
-     Don't have an account? <a href="/signup">Signup</a>
+     Don't have an account? <Link to="/signup">Signup</Link>
     </p>
    </div>
   </section>
