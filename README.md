@@ -41,7 +41,7 @@ This project is using the following extensions:
    <summary>1. Clone this repository</summary>
 
    >\
-   > More information on how to clone this repository available at https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+   > More information on how to clone this repository [available here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
    ><br/><br/>
 </details>
 
@@ -52,6 +52,8 @@ This project is using the following extensions:
    > ```pwsh
    >npm install
    >```
+   >
+   > It is assumed you have NodeJS installed.
    ><br/><br/>
 </details>
 
@@ -134,8 +136,8 @@ This is the first draft of an app template in React/Express. This draft solely u
 
 This is a personal project completed by the author, which you are welcome to use and modify at your discretion.
 
-This project's base skeleton express functionality was based on a web tutorial from Kyle's Web Dev Simplified video [https://www.youtube.com/watch?v=-RCnNyD0L-s](available here). Apart from the styling, this project also differs from the video in the routes, error handling, error display (it does not use flash), the logout logic, adjustments to the session management, adjustments to template structure, among others. The video, however, contains a good starting point for beginners learning Express.js and this project could be considered an improvement on the end result of the video.
+This project's base skeleton express functionality was based on a web tutorial from Kyle's Web Dev Simplified video [available here](https://www.youtube.com/watch?v=-RCnNyD0L-s). Apart from the styling, this project also differs from the video in the routes, error handling, error display (it does not use flash), the logout logic, adjustments to the session management, adjustments to template structure, among others. The video, however, contains a good starting point for beginners learning Express.js and this project could be considered an improvement on the end result of the video.
 
-For learners and Node.js beginners, I could also recommend another video from Programming with Mosh [https://www.youtube.com/watch?v=TlB_eWDSMt4&t=1049s](available here).
+For learners and Node.js beginners, I could also recommend another video from Programming with Mosh [available here](https://www.youtube.com/watch?v=TlB_eWDSMt4&t=1049s).
 
 
