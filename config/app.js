@@ -1,3 +1,10 @@
+/* 
+App main configuration file.
+
+Make sure you have added a .env file to the root directory.
+You may copy the text from the .env.example file, but do not forget to adapt the values.
+ */
+
 require('dotenv').config(); // Loading environment variables into process.env
 const express = require('express');
 const session = require('express-session'); // server-side session

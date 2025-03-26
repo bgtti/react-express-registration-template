@@ -16,11 +16,12 @@
 - [Code and organization](#code-and-organization)
 - [The App](#the-app)
 - [About and license](#about-and-license)
+- [Versioning and external resources](#versioning-and-external-resources)
 <br>
 
 # Introduction
 
-A website template with signup and login functionality built solely with Express JS (no database).
+A website template with signup and login functionality built with Express JS and MongoDB.
 
 This project contains the base functionality and styling for the following pages:
 - Homepage
@@ -32,8 +33,9 @@ This project contains the base functionality and styling for the following pages
 
 This project is using the following extensions:
 - bcrypt for password hashing
-- passport: for authentication (local version)
-- express-session: for session management
+- passport for authentication (local version)
+- express-session for session management
+- jest, supertest, and Mongodb-memory-server for testing
 
 # Installation
 
@@ -41,7 +43,7 @@ This project is using the following extensions:
    <summary>1. Clone this repository</summary>
 
    >\
-   > More information on how to clone this repository [https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository](available here)
+   > More information on how to clone this repository [available here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
    ><br/><br/>
 </details>
 
@@ -49,7 +51,7 @@ This project is using the following extensions:
    <summary>2. Install dependencies</summary>
 
    >\
-   > Make sure you have MongoDB installed in your machine. If you do not, I recommend using the MongoDB Community Server Download [https://www.mongodb.com/try/download/community](available here). (Date: 24 March 2025).
+   > Make sure you have MongoDB installed in your machine. If you do not, I recommend using the MongoDB Community Server Download [available here](https://www.mongodb.com/try/download/community). (Date: 24 March 2025). You should also have NodeJS installed.
    > Next, install the app dependencies:
    >\
    > ```pwsh
@@ -81,27 +83,25 @@ This project is using the following extensions:
 
 # Code and organization
 
-This is a small project, with a very straight-forward folder structure.
+This is a small project, with a standard folder structure.
 
 ## Server.js
 
 Is the entry point of the app.
-It contains the setup of the application, the middleware functions, and the routes.
+It contains the database connection, and starts the server with the imported app configuration.
 
-## Passport-config.js
+## config
 
-Contains the configuration for the 'passport' extension, which handles user authorization.
+App.js contains the main app configurations.
+Passport-config.js contains the configuration for the 'passport' extension, which handles user authorization.
 
-## Views
+## middleware
+Contains authentication middleware functions used in the routes to check whether a user is authenticated or not.
 
-The views directory contains the ejs templates used for the UI.
-The homepage is in the index.ejs file, while other pages are in the files with their respective names.
+## models
+Contains the User schema db model.
 
-It also contains a folder names `partials` with the header and footer templates, which surround the other pages.
-
-The css files are imported in header.ejs.
-
-## Public
+## public
 
 The `public` directory contains the following folders:
 
@@ -110,13 +110,45 @@ The `public` directory contains the following folders:
 - icons: containing icons used for styling
 - images: containing images (including the ones displayed in this README file).
 
+## routes
+
+The routes are contained in two files:
+- auth.js contains auth-related routes such as signup, login, and logout.
+- general.js constains public routes such as homepage and terms and conditions page.
+
+## tests
+
+Contains the main test file which uses jest, supertest, and mongodb memory server. 
+It can be run from the root folder with the following command:
+
+```pwsh
+npm test
+```
+
+## views
+
+The views directory contains the ejs templates used for the UI.
+The homepage is in the index.ejs file, while other pages are in the files with their respective names.
+
+It also contains a folder names `partials` with the header and footer templates, which surround the other pages.
+
+The css files are imported in header.ejs.
+
 # The App
 
 The app contains basic registration functionality and placeholder text/image thought to be used as a starter template in other Express JS projects.
 
-It uses server-side cookies (with express-session), manages authorization (using passport), and saves user registration information (with hashed passwords) to an array (inside server.js).
+It uses server-side cookies (with express-session), manages authorization (using passport), and saves user registration information (with hashed passwords) to a mongoDB database.
 
-When using this project as a template, one should use a database to store user information (adapting the code appropriately).
+## App versions
+
+This is the project's version 2.
+
+Main difference between this version and version 1:
+- folder structure: the code has been separated in the new folder structure
+- tests: test implementation has been added
+- database: version 1 had no database and relied on an array to save users, mongoDB implemented in version 2
+- routes: a new route to delete the user's account has been added and better error handling was added to the signup route
 
 ## Error handling
 
@@ -137,8 +169,15 @@ This is the first draft of an app template in React/Express. This draft solely u
 
 This is a personal project completed by the author, which you are welcome to use and modify at your discretion.
 
-This project's base skeleton express functionality was based on a web tutorial from Kyle's Web Dev Simplified video [https://www.youtube.com/watch?v=-RCnNyD0L-s](available here). Apart from the styling, this project also differs from the video in the routes, error handling, error display (it does not use flash), the logout logic, adjustments to the session management, adjustments to template structure, among others. The video, however, contains a good starting point for beginners learning Express.js and this project could be considered an improvement on the end result of the video.
+# Versioning and external resources
 
-For learners and Node.js beginners, I could also recommend another video from Programming with Mosh [https://www.youtube.com/watch?v=TlB_eWDSMt4&t=1049s](available here).
+Version 1 of this project had a skeleton based on a web tutorial from Kyle's Web Dev Simplified video [available here](https://www.youtube.com/watch?v=-RCnNyD0L-s), which is great for beginners in Node JS/ Express JS. Errors do not use flash, and the routes had slight adjustments. It then improved on the skeleton with proper styling, adjustments to session management and template structure, among others. 
 
+Version 2 built on top of version 1 with database implementation, folder re-structuring, introduction of testing, and slight improvements in the routes. If you are new to Express JS and MongoDB, there is also a video from Kyle's Web Dev Simplified [available here](https://www.youtube.com/watch?v=fgTGADljAeg&t=1016s) where the basics of schema are presented and can be somewhat helpful. 
+
+If one is new to testing in Express, I recommend an article [available here](https://mayallo.com/unit-integration-e2e-testing-using-jest/)
+which is helpful in setting up the testing environment with jest and the mongodb-memory server.
+
+The Version 1 of this project (in express JS only, with no database, using templates) is available in the branch named `version_1`.
+The Version 2 of this project (express JS with mongoDB, using templates) is available in the branch named `version_2`.
 
