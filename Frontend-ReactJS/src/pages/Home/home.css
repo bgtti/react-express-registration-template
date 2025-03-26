@@ -1,0 +1,19 @@
+/*
+Source: Image by Bruno from Pixabay
+available at: https://pixabay.com/photos/spices-cook-spice-up-ingredients-3811731/
+*/
+.Homepage-Image {
+ min-height: calc(100vh - 70px - 70px);
+ height: 100%;
+ width: 100%;
+ background-image: url("../../assets/images/homepage_picture.jpg");
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-position: 76%;
+}
+
+@media only screen and (min-width:1000px) {
+ .Homepage-Image {
+  background-position: bottom;
+ }
+}
