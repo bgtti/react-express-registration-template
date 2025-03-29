@@ -1,7 +1,7 @@
 <div align="center">
   <br>
   <h1><b>Express App Registration Template</b></h1>
-  <strong>Version 2 (Express JS + MongoDB only)</strong>
+  <strong>Express JS + MongoDB Back-end</strong>
 </div>
 <br>
 
@@ -14,6 +14,7 @@
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Code and organization](#code-and-organization)
+- [Api dococumentation](#api-documentation)
 - [The App](#the-app)
 - [About and license](#about-and-license)
 - [Versioning and external resources](#versioning-and-external-resources)
@@ -21,15 +22,14 @@
 
 # Introduction
 
-A website template with signup and login functionality built with Express JS and MongoDB.
+An  Express JS and MongoDB backend template with signup and login functionality built with Express JS and MongoDB.
 
-This project contains the base functionality and styling for the following pages:
-- Homepage
-- Signup page
-- Login page
-- Dashboard page
-- Terms and conditions page
-- Logout functionality
+This project contains the following back-end logic:
+- Signup route
+- Login route
+- Logout rote
+- Get user route (gets user's information from cookie and sends it)
+- Delete account route
 
 This project is using the following extensions:
 - bcrypt for password hashing
@@ -87,7 +87,7 @@ This project is using the following extensions:
 
 This is a small project, with a standard folder structure.
 
-## Server.js
+## server.js
 
 Is the entry point of the app.
 It contains the database connection, and starts the server with the imported app configuration.
@@ -97,26 +97,20 @@ It contains the database connection, and starts the server with the imported app
 App.js contains the main app configurations.
 Passport-config.js contains the configuration for the 'passport' extension, which handles user authorization.
 
+## docs
+
+Contains the documentation for the apis and postman collection.
+See the [api documentation](#api-documentation) section for more details.
+
 ## middleware
 Contains authentication middleware functions used in the routes to check whether a user is authenticated or not.
 
 ## models
 Contains the User schema db model.
 
-## public
-
-The `public` directory contains the following folders:
-
-- css: stylesheet files
-- fonts: fonts downloaded from fontshare used for styling
-- icons: containing icons used for styling
-- images: containing images (including the ones displayed in this README file).
-
 ## routes
 
-The routes are contained in two files:
-- auth.js contains auth-related routes such as signup, login, and logout.
-- general.js constains public routes such as homepage and terms and conditions page.
+All routes are contained in the file called `auth.js`. 
 
 ## tests
 
@@ -127,47 +121,44 @@ It can be run from the root folder with the following command:
 npm test
 ```
 
-## views
+## not in the root directory
 
-The views directory contains the ejs templates used for the UI.
-The homepage is in the index.ejs file, while other pages are in the files with their respective names.
+If you are importing the whole project (backend and frontend) you will note a folder called `generalConfig`. It contains the file `contants.js` which is used by the back-end as well.
+It contains an object with input length for name, email, and password - and it is in an outside folder since its contents are used by both the front and backends of the project. If you are using the back-end part only (or if you are deploying) you should consider copying this file into the back-end folder (and fix the necessary imports).
 
-It also contains a folder names `partials` with the header and footer templates, which surround the other pages.
+# Api documentation
 
-The css files are imported in header.ejs.
+In the `docs` directory you will find the following:
+
+## api directory
+`api` includes:
+- `api.md` which documents sample payloads and responses for each route
+- `postman.md` which documents how to use postman to test the app's routes and how to use the files inside `postman_collection`
+
+## postman_collection
+the folder includes:
+- `ExpressReactRegistrationTemplate.postman_collection.json` — Postman collection with all requests
+- `Local.postman_environment.json` — (Optional) Sample environment variables
 
 # The App
 
-The app contains basic registration functionality and placeholder text/image thought to be used as a starter template in other Express JS projects.
+The app contains basic registration functionality to be used as a starter template in other Fullstack or Express JS projects.
 
 It uses server-side cookies (with express-session), manages authorization (using passport), and saves user registration information (with hashed passwords) to a mongoDB database.
 
 ## App versions
 
-This is the project's version 2.
+This is the project's version 3.
 
-Main difference between this version and version 1:
-- folder structure: the code has been separated in the new folder structure
-- tests: test implementation has been added
-- database: version 1 had no database and relied on an array to save users, mongoDB implemented in version 2
-- routes: a new route to delete the user's account has been added and better error handling was added to the signup route
-
-## Error handling
-
-Very basic server-side error handling was implemented in the forms.
-
-![Preview of app error handling](public/images/readme/App_error_handling.jpg)
-
-## Mobile version
-
-Simple syting was added, with the attempt to build the app mobile-fist.
-This could certainly be improved, especially given the fact no Javascript code was used in the front-end.
-
-![Preview of app on mobile](public/images/readme/App_mobile.jpg)
+Main difference between this version the previous versions:
+- no use of templates: 'views' and 'public' folder have been removed, along with routes displaying express js templates. This version's UI is in React JS.
+- testing: testing changed accordingly, given the apis return json responses
+- routes: routes have been adapted, and a new route (to get user information) was implemented
+- postman: collections have been added to test the routes using postman
 
 # About and license
 
-This is the first draft of an app template in React/Express. This draft solely uses Express with ejs templates.
+This is the third draft of an app template in React/Express. This directory concearns itself with the express js backend.
 
 This is a personal project completed by the author, which you are welcome to use and modify at your discretion.
 
@@ -179,6 +170,8 @@ Version 2 built on top of version 1 with database implementation, folder re-stru
 
 If one is new to testing in Express, I recommend an article [available here](https://mayallo.com/unit-integration-e2e-testing-using-jest/)
 which is helpful in setting up the testing environment with jest and the mongodb-memory server.
+
+Version 3 had a separation of concearns: the React front-end was implemented, and the Express back-end was re-fractored accordingly.
 
 The Version 1 of this project (in express JS only, with no database, using templates) is available in the branch named `version_1`.
 The Version 2 of this project (express JS with mongoDB, using templates) is available in the branch named `version_2`.

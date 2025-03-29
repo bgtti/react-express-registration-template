@@ -1,8 +1,13 @@
 import "./home.css"
 
+/**
+ * Component returns home page.
+ * 
+ * @returns {React.ReactElement}
+ */
 function Home() {
  return (
-  <section class="Main-Section">
+  <section className="Main-Section">
    {/* Metadata */}
    <title>Homepage</title>
 

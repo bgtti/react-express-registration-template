@@ -4,8 +4,8 @@
  * these functions should ideally be called from within api handlers: not from the components
  * this will make debugging easier by having only one source of truth!
  */
-import { store } from "../store"
-import { setUser, setUserLogout } from "../userSlice";
+import { store } from "./store"
+import { setUser, setUserLogout } from "./userSlice";
 
 /**
  * Function saves user information to the redux user slice if the supplied data is valid.
@@ -13,8 +13,6 @@ import { setUser, setUserLogout } from "../userSlice";
  * Returns false and changes user.loggedIn status to false if the supplied data is invalid.
  * 
  * This effectively logs the user in or out of protected routes.
- * 
- * The function should be used to wrap around protected route elements in Router.jsx
  * 
  * @param {string} name //"John"
  * @param {string} email //"john@fakemail.com"

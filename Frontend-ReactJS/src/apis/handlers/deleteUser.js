@@ -1,7 +1,5 @@
 import { api } from "../axios"
 import { apiEndpoints } from "../apiEndpoints"
-import { passwordValidation } from "../../utils/authUtils"
-import { setReduxLogOutUser } from "../../redux/reduxUtils";
 
 /**
  * Function makes api call to delete the user's account.
@@ -26,33 +24,17 @@ import { setReduxLogOutUser } from "../../redux/reduxUtils";
         message: "Error: Deletion failed."
     }
  */
-export function deleteOwnAccount(data = {}) {
-
-    const errorResponse = {
-        response: false,
-        message: "Error: Invalid input."
-    };
-
-    // // Check password
-    // if (!data.password) { return Promise.resolve(errorResponse) }
-    // const passwordIsValid = passwordValidation(data.password);
-    // if (!passwordIsValid.response) { return Promise.resolve(errorResponse) }
-
-    // //Prepare payload
-    // let requestData = {
-    //  "password": data.password
-    // }
-
-    // // preparing the returned response
-    // let res = {
-    //  response: false,
-    //  message: ""
-    // }
+export function deleteOwnAccount() {
 
     // making the request
     const deleteUser = async () => {
+        // preparing the returned response
+        let res = {
+            response: false,
+            message: ""
+        }
         try {
-            const response = await api.post(apiEndpoints.deleteAcct, {
+            const response = await api.delete(apiEndpoints.deleteAcct, {
                 validateStatus: () => true //prevents Axios from throwing error is response status not 2XX
             })
 
@@ -60,7 +42,7 @@ export function deleteOwnAccount(data = {}) {
 
             switch (responseStatus) {
                 case 200:
-                    //User not logged out here: deletion page logs user out
+                    //User not logged out here: deletion page logs user out using deleteUserLogout.js
                     res.response = true;
                     break;
                 case 400:
@@ -74,8 +56,7 @@ export function deleteOwnAccount(data = {}) {
             }
         }
         catch (error) {
-            res.message = "Error: Please refresh the page and try again."
-            // console.warn(`Api handler to delete account encountered an error: ${error}`)
+            res.message = "Error: A error occurred. Please refresh the page and try again."
         }
         return res;
     }

@@ -3,6 +3,7 @@ Routes concearning authentication:
 - Signup
 - Login
 - Logout
+- Get user (to re-log user in from frontend if required)
 - Delete (own account)
  */
 const express = require('express');
@@ -17,6 +18,8 @@ const router = express.Router();
 // Signup route
 router.post('/signup', async (req, res) => {
  const { name, email, password } = req.body;
+
+ console.log(`New signup requested: ${email}.`)
 
  try {
   if (!name || name.length < INPUT_LENGTH.name.minValue || name.length > INPUT_LENGTH.name.maxValue) {
@@ -45,16 +48,20 @@ router.post('/signup', async (req, res) => {
   });
   await newUser.save();
 
+  console.log(`New signup: ${email}.`)
+
   return res.status(201).json({ message: 'User created successfully. Please log in.' });
  } catch (err) {
-  console.error(err);
+  console.error(`New signup failed: ${err}`)
   return res.status(500).json({ error: 'Something went wrong. Please try again.' });
  }
 });
 
 // Login route
 router.post('/login', (req, res, next) => {
+
  console.log("Login requested")
+
  passport.authenticate('local', (err, user, info) => {
   if (err) return next(err);
 
@@ -69,7 +76,7 @@ router.post('/login', (req, res, next) => {
     req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 days
    }
 
-   // Success — send back minimal user data or success message
+   console.log(`New login.`)
    return res.status(200).json({ message: 'Login successful', user: { name: user.name, email: user.email } });
   });
  })(req, res, next);
@@ -80,6 +87,7 @@ router.post('/logout', checkAuthenticated, (req, res, next) => {
  req.logout((err) => {
   if (err) return next(err);
 
+  console.log(`New logout.`)
   req.session.destroy(() => {
    res.clearCookie('connect.sid'); // default cookie name
    res.status(200).json({ message: 'Logged out successfully' });
@@ -87,8 +95,17 @@ router.post('/logout', checkAuthenticated, (req, res, next) => {
  });
 });
 
+// Check current authenticated user
+router.get('/me', checkAuthenticated, (req, res) => {
+ console.log(`Request to get user received.`)
+ const { name, email } = req.user;
+ res.status(200).json({ authenticated: true, user: { name, email } });
+});
+
 // Delete own account
-router.post('/deleteAccount', checkAuthenticated, async (req, res) => {
+router.delete('/deleteMe', checkAuthenticated, async (req, res) => {
+ console.log(`Request to delete user received.`)
+
  try {
   await User.findByIdAndDelete(req.user._id);
 
@@ -100,6 +117,7 @@ router.post('/deleteAccount', checkAuthenticated, async (req, res) => {
 
    req.session.destroy(() => {
     res.clearCookie('connect.sid'); // Adjust cookie name if custom
+    console.log(`Account deleted successfully.`)
     return res.status(200).json({ message: 'Account deleted and logged out successfully.' });
    });
   });

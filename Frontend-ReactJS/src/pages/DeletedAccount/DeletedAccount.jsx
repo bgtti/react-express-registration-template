@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { logOutDeletedUser } from "../../apis/handlers/deleteUserLogout";
 /**
  * Component returns a page confirming the user's account was deleted.
@@ -7,15 +8,19 @@ import { logOutDeletedUser } from "../../apis/handlers/deleteUserLogout";
  * @returns {React.ReactElement}
  * 
  */
-function AccountDeleted() {
- logOutDeletedUser();
+function DeletedAccount() {
+
+ useEffect(() => {
+  logOutDeletedUser();
+ }, []);
 
  return (
-  <section class="Main-Section">
-   {/* <Helmet>
-    <title>Account Deleted</title>
-    <meta name="robots" content="noindex, nofollow" />
-   </Helmet> */}
+  <section className="Main-Section">
+   {/* Metadata */}
+   <title>Account deleted</title>
+   <meta name="robots" content="noindex, nofollow" />
+
+   {/* Component */}
    <h1>Account deleted</h1>
    <br />
    <p><b>Your account was deleted successfully!</b></p>
@@ -25,4 +30,4 @@ function AccountDeleted() {
  );
 }
 
-export default AccountDeleted;
+export default DeletedAccount;

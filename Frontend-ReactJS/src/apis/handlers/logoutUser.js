@@ -1,11 +1,13 @@
+import { api } from "../axios"
 import { setReduxLogOutUser } from "../../redux/reduxUtils";
+import { apiEndpoints } from "../apiEndpoints";
 
 /**
  * Function makes api call to logout the user, and also logs out user from the redux store.
  * 
  * Takes no parameters and returns an object with a response key and boolean value.
  * 
- * @returns {object}
+ * @returns {Promise<object>} // with boolean response
  * 
  * @example
  * // Response from logoutUser:
@@ -45,5 +47,4 @@ export function logoutUser() {
     }
 
     return logout();
-
 }

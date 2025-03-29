@@ -4,13 +4,12 @@ import "./successMessage.css"
 /**
  * Component returns a div that can be used for displaying success messages in components.
  * 
- * Requires one prop: message (required) 
- * 
- * @visibleName Error Message
+ * Requires one prop: message
  * 
  * @param {object} props
  * @param {string} props.message // error message to be shown to user
  * @returns {React.ReactElement}
+ * 
  * @example
  * import SuccessMessage from "../../components/SuccessMessage/SuccessMessage";
  * let successMessage = "Signup successfull!" //==> param!

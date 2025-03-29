@@ -1,7 +1,12 @@
-import { Link } from 'react-router-dom'; // if using react-router for internal routing
+import { Link } from 'react-router-dom';
 import GithubIcon from "../../assets/icons/github.png";
 import "./footer.css"
 
+/**
+ * Component returns footer component.
+ * 
+ * @returns {React.ReactElement}
+ */
 function Footer() {
 
  return (

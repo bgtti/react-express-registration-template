@@ -9,7 +9,7 @@ import { nameValidation, emailValidation, passwordValidation } from "../../utils
  * @param {string} data.name 
  * @param {string} data.email 
  * @param {string} data.password
- * @returns {Promise<object>}
+ * @returns {Promise<object>} // with boolean response and string message
  */
 export function signupUser(data = {}) {
   // checking if data was received correctly

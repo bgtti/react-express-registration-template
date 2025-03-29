@@ -7,9 +7,12 @@ import Loader from "../components/Loader/Loader";
 // Pages
 import Home from '../pages/Home/Home';
 import Terms from "../pages/Terms/Terms";
-import Dashboard from "../pages/Dashboard/Dashboard";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
+import DeletedAccount from "../pages/DeletedAccount/DeletedAccount"
+// Protected pages
+import ProtectedUserRoute from "./ProtectedRoute"; //wrapper
+import Dashboard from "../pages/Dashboard/Dashboard";
 
 const Router = () => {
  //Loader
@@ -25,6 +28,11 @@ const Router = () => {
     <Route exact path="terms" element={<Terms />} />
     <Route exact path="login" element={<Login />} />
     <Route exact path="signup" element={<Signup />} />
+    <Route exact path="deletedAccount" element={<DeletedAccount />} />
+    <Route element={<ProtectedUserRoute />}>
+     <Route index element={<Navigate to="dashboard" replace />} />
+     <Route path="dashboard" element={<Dashboard />} />
+    </Route>
    </Routes>
    <Footer />
   </BrowserRouter>

@@ -34,6 +34,10 @@
  font-size: 22px !important;
 }
 
+.NavBar-Items li a.active {
+ color: var(--Olive);
+}
+
 @media (hover: hover) {
  .NavBar-Items li a:hover {
   font-weight: bolder;
