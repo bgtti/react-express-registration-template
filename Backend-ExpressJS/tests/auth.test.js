@@ -24,6 +24,9 @@ const app = require('../config/app'); // the Express app
 const User = require('../models/users'); // the Mongoose User model
 const bcrypt = require('bcrypt'); // password hashing
 
+// Prevent the session store from connecting to a real MongoDB during testing
+process.env.NODE_ENV = 'test';
+
 // Test database configuration
 let mongoServer;
 
@@ -34,16 +37,18 @@ beforeAll(async () => {
 
 });
 
-afterAll(async () => {
-  await mongoose.connection.close();
-  await mongoServer.stop();
-});
-
 afterEach(async () => {
   const collections = mongoose.connection.collections;
   for (const key in collections) {
     await collections[key].deleteMany({});// Reset db between tests
   }
+});
+
+afterAll(async () => {
+  await mongoose.connection.dropDatabase();
+  await mongoose.connection.close();
+  await mongoose.disconnect();
+  await mongoServer.stop();
 });
 
 //Signup test

@@ -25,7 +25,8 @@ app.use(cors({
  origin: 'http://localhost:5173', // React app's origin
  credentials: true
 }));
-app.use(session({
+
+const sessionConfig = {
  secret: process.env.SESSION_SECRET,
  resave: false,
  saveUninitialized: false,
@@ -34,9 +35,16 @@ app.use(session({
   secure: process.env.NODE_ENV === 'production',
   sameSite: 'lax', // or 'none' if cross-site
   maxAge: null // will be set dynamically if "remember" is checked
- },
- store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL })
-}));
+ }
+}
+// Only add MongoStore if NOT in test environment
+if (process.env.NODE_ENV !== 'test') {
+ sessionConfig.store = MongoStore.create({
+  mongoUrl: process.env.DATABASE_URL
+ });
+}
+
+app.use(session(sessionConfig));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static('public')); // access to css files
