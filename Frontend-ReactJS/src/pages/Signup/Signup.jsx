@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { INPUT_LENGTH } from "../../../../generalConfig/constants.js";
+import { INPUT_LENGTH } from "../../utils/constants.js";
 import { setLoader } from '../../redux/loaderSlice.js';
 import useIsComponentMounted from "../../hooks/useIsComponentMounted.js";
 import { signupUser } from '../../apis/handlers/signupUser.js';

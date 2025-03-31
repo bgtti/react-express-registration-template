@@ -7,7 +7,7 @@
 
 <hr>
 
-![Preview of app](public/images/readme/App_preview_gif.gif)
+![Preview of postman](docs/api/Postman_gif.gif)
 <hr>
 
 # Table of Contents
@@ -81,7 +81,7 @@ This project is using the following extensions:
    >```
    ><br/><br/>
 </details>
-
+<br/>
 
 # Code and organization
 

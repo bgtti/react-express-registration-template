@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'; // if using react-router for internal routing
 import { useDispatch } from "react-redux";
-import { INPUT_LENGTH } from "../../../../generalConfig/constants.js";
+import { INPUT_LENGTH } from "../../utils/constants.js";
 import { setLoader } from '../../redux/loaderSlice.js';
 import useIsComponentMounted from "../../hooks/useIsComponentMounted.js";
 import { loginUser } from '../../apis/handlers/loginUser.js';

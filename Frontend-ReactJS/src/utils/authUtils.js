@@ -1,4 +1,7 @@
-import { INPUT_LENGTH } from "../../../generalConfig/constants";
+import { INPUT_LENGTH } from "./constants.js";
+// import constants from '../shared/constants.js';
+
+// const { INPUT_LENGTH } = constants;
 
 /**
  * Function that validates a user's name input

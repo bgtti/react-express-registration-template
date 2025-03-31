@@ -11,7 +11,7 @@ const bcrypt = require('bcrypt'); // for hashing
 const passport = require('passport');// for authentication
 const User = require('../models/users')// db
 const checkAuthenticated = require('../middleware/authMiddleware');// middleware functions
-const { INPUT_LENGTH } = require('../../generalConfig/constants');
+const { INPUT_LENGTH } = require('../utils/constants.js');
 
 const router = express.Router();
 
