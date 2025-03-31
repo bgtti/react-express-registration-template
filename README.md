@@ -1,41 +1,77 @@
 <div align="center">
   <br>
-  <h1><b>Express App Registration Template</b></h1>
-  <strong>Version 2 (Express JS + MongoDB only)</strong>
+  <h1><b>Fullstack Registration Template</b></h1>
+  <strong>Fullstack Auth Template</strong>
 </div>
 <br>
-
+<table align="center" style="border-collapse:separate;">
+  <tr>
+    <td style="background: #344955; border-radius:20px; border: 5px solid transparent"><small>Express JS</small></td>
+    <td style="background: #344955; border-radius:20px"><small>MongoDB</small></td>
+    <td style="background: #344955; border-radius:20px"><small>React JS</small></td>
+    <td style="background: #344955; border-radius:20px"><small>Jest JS</small></td>
+    <td style="background: #344955; border-radius:20px"><small>Supertest</small></td>
+    <td style="background: #344955; border-radius:20px"><small>Postman</small></td>
+  </tr>
+</table>
 <hr>
 
-![Preview of app](public/images/readme/App_preview_gif.gif)
+![Preview of app](readmeAssets/App_preview_gif.gif)
 <hr>
 
 # Table of Contents
 - [Introduction](#introduction)
+   - [Functionality](#functionality)
+   - [Tech Stack and Tools](#tech-stack-and-tools)
 - [Installation](#installation)
-- [Code and organization](#code-and-organization)
+- [Project Structure and Documentation](#project-structure-and-documentation)
+   - [Frontend-ReactJS](#frontend-reactjs)
+   - [Backend-ExpressJS](#backend-expressjs)
+   - [readmeAssets](#readmeassets)
 - [The App](#the-app)
+- [Versioning and branches](#versioning-and-branches)
 - [About and license](#about-and-license)
-- [Versioning and external resources](#versioning-and-external-resources)
 <br>
 
 # Introduction
 
-A website template with signup and login functionality built with Express JS and MongoDB.
+A full-stack boilerplate project featuring user signup, login, session management, and protected routes. Built with **Express.js**, **MongoDB**, and **React.js**.
 
-This project contains the base functionality and styling for the following pages:
+This monorepo contains separate frontend and backend apps, structured to help you kickstart a fullstack web app with authentication.
+
+The codebase is clean and modular, with a straightforward folder structure and clear documentation, making it easy to build upon and extend with your own features.
+
+## Fuctionality
+
+This project contains the base functionality and styling for:
 - Homepage
 - Signup page
 - Login page
 - Dashboard page
 - Terms and conditions page
 - Logout functionality
+- Delete account functionality
 
-This project is using the following extensions:
-- bcrypt for password hashing
-- passport for authentication (local version)
-- express-session for session management
-- jest, supertest, and Mongodb-memory-server for testing
+## Tech Stack and Tools
+
+**Backend:**
+
+- bcrypt – password hashing
+- passport – local authentication strategy
+- express-session – session management
+- jest, supertest, and mongodb-memory-server – testing
+
+**Frontend:**
+
+- React Router – client-side routing
+- Redux Toolkit – state management
+- Axios – HTTP requests
+- PropTypes – prop validation
+
+**Styling:**
+
+Plain CSS (no frameworks), UI built mobile-first.
+
 
 # Installation
 
@@ -48,13 +84,31 @@ This project is using the following extensions:
 </details>
 
 <details>
+   <summary>2. Open the Back-end and Front-end terminals</summary>
+
+   >\
+   > If using Visual Studio Code, right-click on each folder and select **Open in Integraded Terminal**.
+   > 
+   >![Preview of opening in terminal](readmeAssets/App_open_in_terminal.jpg)
+   >
+   ><br/><br/>
+</details>
+
+<details>
    <summary>2. Install dependencies</summary>
 
    >\
    > Make sure you have MongoDB installed in your machine. If you do not, I recommend using the MongoDB Community Server Download [available here](https://www.mongodb.com/try/download/community). (Date: 24 March 2025). You should also have NodeJS installed.
-   > Next, install the app dependencies:
-   >\
+   > Next, install the app dependencies for both the Back- and Front-end apps.
+   >
+   > **Backend-ExpressJS**
    > ```pwsh
+   >cd Backend-ExpressJS
+   >npm install
+   >```
+   > **Frontend-ReactJS**
+   > ```pwsh
+   >cd Frontend-ReactJS
    >npm install
    >```
    ><br/><br/>
@@ -64,120 +118,75 @@ This project is using the following extensions:
    <summary>3. Create an env file</summary>
 
    >\
-   > You can create a .env file in the root, the content should be similar to that of the .env.example file provided.
+   > You can create a .env file in the root of the `Backend-ExpressJS` folder, the content should be similar to that of the .env.example file provided.
    > 
    > Do not forget to change the session secret key.
    ><br/><br/>
 </details>
 
 <details>
-   <summary>4. Run the app</summary>
+   <summary>4. Run both apps</summary>
 
    >\
+   > **Backend-ExpressJS**
    > ```pwsh
    >npm run devStart
    >```
+   > **Frontend-ReactJS**
+   > ```pwsh
+   >npm run dev
+   >```
+   > 
+   >![Preview of terminal](readmeAssets/App_terminal.jpg)
+   > 
    ><br/><br/>
 </details>
+<br/>
 
+# Project Structure and Documentation
 
-# Code and organization
+This repo contains both the front- and back-ends of the application, and each app contains its own documentation (`readme.md` files). From the root directory, apart from the `.gitignore` and `LICENSE`, you will find the following folders:
 
-This is a small project, with a standard folder structure.
+## Frontend-ReactJS
 
-## Server.js
+Contains the front-end part of the application.
+You can see detailed information about the front-end app [in it's documentation](Frontend-ReactJS/README.md).
 
-Is the entry point of the app.
-It contains the database connection, and starts the server with the imported app configuration.
+## Backend-ExpressJS
 
-## config
+Contains the back-end part of the application.
+You can see detailed information about the the server and testing [in it's documentation](Backend-ExpressJS/README.md).
+The back-end directory also includes a Postman collection, as well as a test file which runs with Jest.
 
-App.js contains the main app configurations.
-Passport-config.js contains the configuration for the 'passport' extension, which handles user authorization.
+## readmeAssets
 
-## middleware
-Contains authentication middleware functions used in the routes to check whether a user is authenticated or not.
+Contains the images used in this readme file.
 
-## models
-Contains the User schema db model.
+# The template
 
-## public
-
-The `public` directory contains the following folders:
-
-- css: stylesheet files
-- fonts: fonts downloaded from fontshare used for styling
-- icons: containing icons used for styling
-- images: containing images (including the ones displayed in this README file).
-
-## routes
-
-The routes are contained in two files:
-- auth.js contains auth-related routes such as signup, login, and logout.
-- general.js constains public routes such as homepage and terms and conditions page.
-
-## tests
-
-Contains the main test file which uses jest, supertest, and mongodb memory server. 
-It can be run from the root folder with the following command:
-
-```pwsh
-npm test
-```
-
-## views
-
-The views directory contains the ejs templates used for the UI.
-The homepage is in the index.ejs file, while other pages are in the files with their respective names.
-
-It also contains a folder names `partials` with the header and footer templates, which surround the other pages.
-
-The css files are imported in header.ejs.
-
-# The App
-
-The app contains basic registration functionality and placeholder text/image thought to be used as a starter template in other Express JS projects.
+The apps contains basic registration functionality and placeholder text/image thought to be used as a starter template in other Express + React projects.
 
 It uses server-side cookies (with express-session), manages authorization (using passport), and saves user registration information (with hashed passwords) to a mongoDB database.
 
-## App versions
+![Preview of cookie](readmeAssets/App_cookie.jpg)
 
-This is the project's version 2.
+# Versioning and branches
 
-Main difference between this version and version 1:
-- folder structure: the code has been separated in the new folder structure
-- tests: test implementation has been added
-- database: version 1 had no database and relied on an array to save users, mongoDB implemented in version 2
-- routes: a new route to delete the user's account has been added and better error handling was added to the signup route
+This is the project's version 3.
 
-## Error handling
+Main difference between this and previous versions:
+- react implementation: previous versions used ExpressJS for the UI as well
+- routes: new routes implemented
+- testing: more test cases included
+- documentation: api documentation and postman collections included 
 
-Very basic server-side error handling was implemented in the forms.
+The Version 1 of this project (in Express JS only, with no database, using templates) is available in the branch named `version_1`.
 
-![Preview of app error handling](public/images/readme/App_error_handling.jpg)
-
-## Mobile version
-
-Simple syting was added, with the attempt to build the app mobile-fist.
-This could certainly be improved, especially given the fact no Javascript code was used in the front-end.
-
-![Preview of app on mobile](public/images/readme/App_mobile.jpg)
+The Version 2 of this project (express JS with mongoDB, using templates, with basic jest testing) is available in the branch named `version_2`.
 
 # About and license
 
 This is the first draft of an app template in React/Express. This draft solely uses Express with ejs templates.
 
 This is a personal project completed by the author, which you are welcome to use and modify at your discretion.
-
-# Versioning and external resources
-
-Version 1 of this project had a skeleton based on a web tutorial from Kyle's Web Dev Simplified video [available here](https://www.youtube.com/watch?v=-RCnNyD0L-s), which is great for beginners in Node JS/ Express JS. Errors do not use flash, and the routes had slight adjustments. It then improved on the skeleton with proper styling, adjustments to session management and template structure, among others. 
-
-Version 2 built on top of version 1 with database implementation, folder re-structuring, introduction of testing, and slight improvements in the routes. If you are new to Express JS and MongoDB, there is also a video from Kyle's Web Dev Simplified [available here](https://www.youtube.com/watch?v=fgTGADljAeg&t=1016s) where the basics of schema are presented and can be somewhat helpful. 
-
-If one is new to testing in Express, I recommend an article [available here](https://mayallo.com/unit-integration-e2e-testing-using-jest/)
-which is helpful in setting up the testing environment with jest and the mongodb-memory server.
-
-The Version 1 of this project (in express JS only, with no database, using templates) is available in the branch named `version_1`.
-The Version 2 of this project (express JS with mongoDB, using templates) is available in the branch named `version_2`.
 

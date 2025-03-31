@@ -1,0 +1,46 @@
+.NavBar {
+ height: 70px;
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+ position: relative;
+}
+
+.NavBar-AppName {
+ font-family: 'Melodrama-Bold', sans-serif;
+ font-size: 32px !important;
+ color: var(--Chestnut);
+ text-decoration: none;
+}
+
+@media only screen and (min-width:850px) {
+ .NavBar-AppName {
+  font-size: 1.5em;
+ }
+}
+
+.NavBar-Items {
+ display: flex;
+ gap: 20px;
+}
+
+.NavBar-Items li a {
+ font-family: 'Nunito-Bold', sans-serif;
+ display: flex;
+ font-weight: bold;
+ text-decoration: none;
+ cursor: pointer;
+ color: var(--Burgundy);
+ font-size: 22px !important;
+}
+
+.NavBar-Items li a.active {
+ color: var(--Olive);
+}
+
+@media (hover: hover) {
+ .NavBar-Items li a:hover {
+  font-weight: bolder;
+  color: var(--Olive);
+ }
+}

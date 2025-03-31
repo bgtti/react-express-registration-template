@@ -1,0 +1,196 @@
+/* This file contains the general styling of the document and classes used in the website pages. */
+
+/*Useful resource: Convert hex to CSS filter: https: //codepen.io/sosuke/pen/Pjoqqp */
+
+@import url('fontNunito.css');
+@import url('fontMelodrama.css');
+
+:root {
+ --Rosewood: #923641;
+ --Olive: #605b3b;
+ --Burgundy: #0f0607;
+ --BurgundyFilter: invert(3%) sepia(11%) saturate(4717%) hue-rotate(311deg) brightness(88%) contrast(98%);
+ --Chestnut: #6A381D;
+ --Yellow: #D9B036;
+ --Gray: #e4e3d5;
+
+ font-family: 'Nunito-Regular', sans-serif;
+}
+
+* {
+ font-family: 'Nunito-Regular', sans-serif;
+}
+
+p,
+a,
+button {
+ font-size: 20px;
+}
+
+@media only screen and (min-width:1000px) {
+
+ p,
+ a,
+ button {
+  font-size: 16px;
+ }
+}
+
+a {
+ color: var(--Olive);
+}
+
+b {
+ font-weight: bold;
+}
+
+i {
+ font-style: italic;
+}
+
+h1 {
+ font-family: 'Melodrama-Medium', sans-serif;
+ font-size: 3em;
+ color: var(--Rosewood);
+ margin: 5px 0;
+}
+
+label,
+input {
+ font-size: 18px;
+}
+
+@media only screen and (min-width:1000px) {
+
+ label,
+ input {
+  font-size: 16px;
+ }
+}
+
+input[type="checkbox"]:checked {
+ background-color: var(--Yellow) !important;
+ border-color: var(--Yellow);
+}
+
+input[type="checkbox"] {
+ accent-color: var(--Yellow);
+}
+
+input:focus {
+ outline: none !important;
+ border: 1px solid var(--Yellow);
+}
+
+button {
+ font-weight: 600;
+ letter-spacing: 1px;
+ padding: 7px 25px;
+ background-color: var(--Yellow);
+ border: none;
+ border-radius: 7px;
+ box-shadow: #0f06076b 0px 7px 20px 0px;
+ color: var(--Burgundy);
+ cursor: pointer;
+}
+
+@media (hover: hover) {
+ button:hover {
+  box-shadow: #0f06071c 0px 30px 60px -12px inset, #0f06071b 0px 18px 36px -18px inset;
+ }
+}
+
+button:disabled {
+ background-color: var(--Gray);
+ box-shadow: none;
+}
+
+/* ALL PAGES */
+.Main-Section {
+ min-height: calc(100vh - 70px - 70px);
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+/* FORMS: SIGNUP + LOGIN */
+
+.Main-Form-Container {
+ margin: 0 20px;
+ padding: 20px !important;
+ border-radius: 5px;
+ box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+ padding: 10px;
+ min-width: 500px;
+ width: 85%;
+}
+
+@media only screen and (min-width:1000px) {
+ .Main-Form-Container {
+  min-width: 500px;
+  max-width: 30%;
+ }
+}
+
+form {
+ display: flex;
+ flex-direction: column;
+ gap: 20px;
+}
+
+form>div {
+ display: flex;
+ flex-direction: column;
+ gap: 10px
+}
+
+@media only screen and (min-width:1000px) {
+
+ form>div {
+  gap: 7px
+ }
+}
+
+form>div>input {
+ border: 1px solid var(--Gray);
+ border-radius: 5px;
+ padding: 10px;
+}
+
+@media only screen and (min-width:1000px) {
+
+ form>div>input {
+  padding: 5px;
+ }
+}
+
+form>div>label {
+ font-weight: bold;
+}
+
+.Main-Form-Checkbox {
+ font-weight: normal;
+}
+
+/* Delete button */
+.Main-Form-Delete-Btn {
+ background-color: var(--Rosewood);
+ color: white;
+}
+
+/*DASHBOARD PAGE*/
+.Main-Dashboard-Content {
+ margin: 20px;
+ display: flex;
+ flex-direction: column;
+ gap: 25px;
+}
+
+/* TERMS PAGE */
+.Main-Text-Container {
+ margin: 20px;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+}
