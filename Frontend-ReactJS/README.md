@@ -83,6 +83,8 @@ This project is using the following extensions:
 
 The main entry to the application is `main.jsx`, where the main css files are imported, and which will return the Router.
 
+![Preview of code](src/assets/images/readme/FE_VScode.jpg)
+
 ## router
 
 This project uses the React Router library. It creates the App around it in `main.jsx`.
@@ -130,11 +132,8 @@ Loader is used for when the loader should be displayed. User stores information 
 ## utils
 
 `authUtils.js` contains authentication-related utility functions such as checking whether a password or email is valid.
-
-## not in the root directory
-
-If you are importing the whole project (backend and front-end) you will note a folder called `generalConfig`. It contains the file `contants.js` which is used by the front-end as well.
-It contains an object with input length for name, email, and password - and it is in an outside folder since its contents are used by both the front and backends of the project. If you are using the front-end part only (or if you are deploying) you should consider copying this file into the front-end folder (and fix the necessary imports).
+`constants.js` contains an object with input length for name, email, and password which is used inside authUtils as well as in apiHandlers to validate input length.
+Note that a similar file to `contants.js` is also to be found in the Back-end folder for similar purposes. Should you make changes to this file, you might want to correct the Backend file as well.
 
 # The App
 
@@ -171,4 +170,4 @@ Version 1 of this project contains an Express JS-only app without a database.  I
 
 Version 2 built on top of version 1 adds the database implementation (using MongoDB), some basic Jest/Supertest testing, and improvements in routes and folder structure. It is still available in the branch named `version_2`.
 
-Version 3 introduces React for the frontend, separating the project into 2 separate folders: `Backend-ExpressJS`and `Frontend-ReactJS`. The frontend is independent from the backend, and can be used together or separately as a template for other projects.
+Version 3 introduces React for the frontend, separating the project into 2 separate folders: `Backend-ExpressJS` and `Frontend-ReactJS`. The frontend is independent from the backend, and can be used together or separately as a template for other projects.
