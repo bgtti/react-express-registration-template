@@ -15,6 +15,7 @@
 - [Installation](#installation)
 - [Code and organization](#code-and-organization)
 - [Api dococumentation](#api-documentation)
+- [Testing](#testing)
 - [The App](#the-app)
 - [About and license](#about-and-license)
 - [Versioning and external resources](#versioning-and-external-resources)
@@ -114,17 +115,26 @@ All routes are contained in the file called `auth.js`.
 
 ## tests
 
-Contains the main test file which uses jest, supertest, and mongodb memory server. 
+Contains only one test file with basic test cases. More information about testing available [here](#testing).  
+
+## utils
+
+Contains the file `contants.js` which contains constant values to define the length of expected inputs (such as email and password).
+Note an almost identical version also exists in the Frontend project folder (consumed by the React App only).
+If you are using both the front- and back-end templates to build your project, remeber to either share a file between both or make changes to both files should these constants need to change.
+
+# Testing
+
+In the `test` directory, the file `auth.test.js` contains both the testing configuration as well as tests for each route provided.
+Testing uses jest, supertest, and Mongodb-memory-server. 
+
 It can be run from the root folder with the following command:
 
 ```pwsh
 npm test
 ```
 
-## not in the root directory
-
-If you are importing the whole project (backend and frontend) you will note a folder called `generalConfig`. It contains the file `contants.js` which is used by the back-end as well.
-It contains an object with input length for name, email, and password - and it is in an outside folder since its contents are used by both the front and backends of the project. If you are using the back-end part only (or if you are deploying) you should consider copying this file into the back-end folder (and fix the necessary imports).
+![Preview of tests](docs/readmeImages/App_tests.jpg)
 
 # Api documentation
 
@@ -133,12 +143,17 @@ In the `docs` directory you will find the following:
 ## api directory
 `api` includes:
 - `api.md` which documents sample payloads and responses for each route
-- `postman.md` which documents how to use postman to test the app's routes and how to use the files inside `postman_collection`
+- `postman.md` which documents how to use postman to test the app's routes and how to use the files inside `postmanCollection`
 
-## postman_collection
+## postmanCollection
 the folder includes:
 - `ExpressReactRegistrationTemplate.postman_collection.json` — Postman collection with all requests
 - `Local.postman_environment.json` — (Optional) Sample environment variables
+
+![Preview of postman](docs/api/Postman_gif.gif)
+
+## readmeImages
+the folder constains images displayed in this README.md file.
 
 # The App
 
@@ -152,7 +167,7 @@ This is the project's version 3.
 
 Main difference between this version the previous versions:
 - no use of templates: 'views' and 'public' folder have been removed, along with routes displaying express js templates. This version's UI is in React JS.
-- testing: testing changed accordingly, given the apis return json responses
+- testing: testing changed accordingly (given json responses) and new tests implemented (previously only signup and login routes were tested)
 - routes: routes have been adapted, and a new route (to get user information) was implemented
 - postman: collections have been added to test the routes using postman
 
