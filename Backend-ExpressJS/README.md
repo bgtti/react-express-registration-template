@@ -7,7 +7,7 @@
 
 <hr>
 
-![Preview of postman](docs/api/Postman_gif.gif)
+![Preview of code editor](docs/readmeImages/App_BE_VScode.jpg)
 <hr>
 
 # Table of Contents
@@ -153,7 +153,7 @@ the folder includes:
 ![Preview of postman](docs/api/Postman_gif.gif)
 
 ## readmeImages
-the folder constains images displayed in this README.md file.
+the folder contains images displayed in this README.md file.
 
 # The App
 
