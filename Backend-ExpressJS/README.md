@@ -17,8 +17,8 @@
 - [Api dococumentation](#api-documentation)
 - [Testing](#testing)
 - [The App](#the-app)
-- [About and license](#about-and-license)
 - [Versioning and external resources](#versioning-and-external-resources)
+- [About and license](#about-and-license)
 <br>
 
 # Introduction
@@ -171,11 +171,6 @@ Main difference between this version the previous versions:
 - routes: routes have been adapted, and a new route (to get user information) was implemented
 - postman: collections have been added to test the routes using postman
 
-# About and license
-
-This is the third draft of an app template in React/Express. This directory concearns itself with the express js backend.
-
-This is a personal project completed by the author, which you are welcome to use and modify at your discretion.
 
 # Versioning and external resources
 
@@ -190,4 +185,10 @@ Version 3 had a separation of concearns: the React front-end was implemented, an
 
 The Version 1 of this project (in express JS only, with no database, using templates) is available in the branch named `version_1`.
 The Version 2 of this project (express JS with mongoDB, using templates) is available in the branch named `version_2`.
+
+# About and license
+
+This is the third draft of an app template in React/Express. This directory concearns itself with the express js backend.
+
+This is a personal project completed by the author, which you are welcome to use and modify at your discretion.
 

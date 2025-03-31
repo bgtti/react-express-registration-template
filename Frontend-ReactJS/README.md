@@ -15,8 +15,8 @@
 - [Installation](#installation)
 - [Code and organization](#code-and-organization)
 - [The App](#the-app)
-- [About and license](#about-and-license)
 - [Versioning and external resources](#versioning-and-external-resources)
+- [About and license](#about-and-license)
 <br>
 
 # Introduction
@@ -154,15 +154,9 @@ Very basic server-side error handling was implemented in the forms.
 
 ## Mobile version
 
-Simple syting was added, with the attempt to build the app mobile-fist.
+Simple styling was added, with the attempt to build the app mobile-fist.
 
 ![Preview of error handling](src/assets/images/readme/FE_mobile.jpg)
-
-# About and license
-
-This is the third draft of an app template in React/Express. 
-
-This is a personal project completed by the author, which you are welcome to use and modify at your discretion.
 
 # Versioning and external resources
 
@@ -171,3 +165,9 @@ Version 1 of this project contains an Express JS-only app without a database.  I
 Version 2 built on top of version 1 adds the database implementation (using MongoDB), some basic Jest/Supertest testing, and improvements in routes and folder structure. It is still available in the branch named `version_2`.
 
 Version 3 introduces React for the frontend, separating the project into 2 separate folders: `Backend-ExpressJS` and `Frontend-ReactJS`. The frontend is independent from the backend, and can be used together or separately as a template for other projects.
+
+# About and license
+
+This is the third draft of an app template in React/Express. 
+
+This is a personal project completed by the author, which you are welcome to use and modify at your discretion.
